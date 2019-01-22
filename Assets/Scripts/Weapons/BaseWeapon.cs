@@ -21,6 +21,9 @@ namespace UnityStandardAssets._2D
         private float nextFire;
         private WaitForSeconds shotDuration = new WaitForSeconds(0.07f);
 
+        public AudioClip weaponFireClip;
+        public AudioClip weaponEmptyClip;
+
         //Temporary for prototyping - will need to update logic for custom controller script
         private PlatformerCharacter2D character2D;
 
@@ -76,7 +79,7 @@ namespace UnityStandardAssets._2D
 
         private IEnumerator ShotEffect()
         {
-            weaponAudio.Play();
+            weaponAudio.PlayOneShot(weaponFireClip);
 
             yield return shotDuration;
         }

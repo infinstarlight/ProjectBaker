@@ -11,12 +11,13 @@ public class CharacterStats : MonoBehaviour, IKillable, IDamageable<float>
     public float maxHealth = 100;
 
     protected bool isDead = false;
-
+    private Character parentGO;
     private AudioSource audioSource;
 
    public void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        parentGO = GetComponentInParent<Character>();
     }
     // Start is called before the first frame update
    public void Start()
@@ -33,7 +34,7 @@ public class CharacterStats : MonoBehaviour, IKillable, IDamageable<float>
         //TODO: For player, disable input logic
         //TODO: For AI, disable attacking logic
         //Placeholder Logic
-        Destroy(gameObject);
+        Destroy(parentGO.gameObject);
         //End Placeholder
 
         //TODO: Call Death Animation, play death SFX
